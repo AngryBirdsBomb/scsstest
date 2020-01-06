@@ -201,7 +201,7 @@ export default {
             for (var j = 0; j < 20; j++) {
                 var newStar = document.createElement("div");
                 newStar.className = "star";
-                let top = this.randomDistance(500, -100);
+                let top = this.randomDistance(1500, -100);
                 let left = this.randomDistance(1980, 300);
                 newStar.style.top = top + "px";
                 newStar.style.left = left + "px";
@@ -217,14 +217,19 @@ export default {
                 let dis = Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2));
                 let top = parseInt(star[i].offsetTop) ;
                 let left = parseInt(star[i].offsetLeft);
+                let speed=1000;
                 let timer = setInterval(() => {
                     top-=10;
                     left-=10;
+                    speed-=500;
                     if(left<=x){
                         left=x;
                     }
                     if(top<=y){
                         top=y;
+                    }
+                    if(speed<=100){
+                        speed=100;
                     }
                     star[i].style.top = top + "px";
                     star[i].style.left = left + "px";
@@ -232,7 +237,7 @@ export default {
                         clearInterval(timer);
                         star[i].style.display='none';
                     }
-                }, 1000);
+                }, speed);
                 star[i].style.animationDelay =
                     i % 6 == 0 ? "0s" : i * 0.8 + "s";
             }
