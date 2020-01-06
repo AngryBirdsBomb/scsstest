@@ -14,20 +14,33 @@ export default {
     data () {
         return {
             msg: 'Welcome to Your Vue.js App',
-            selColor: '123'
+            selColor: '切换主题'
         }
     },
     methods: {
         changeColor (theme) {
             console.log(this.selColor)
-            window.document.querySelectorAll('p')[0].setAttribute('data-theme', theme)
+            window.document.querySelector('.hello').setAttribute('data-theme', theme)
+        },
+        e () {
+            var express = require('express')
+            console.log(express)
         }
+    },
+    mounted () {
+        this.e()
+        this.$http.get('http://127.0.0.1:8888/api',
+        {
+            name: '11'
+        }).then((res) => {
+            console.log(res)
+        })
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style  lang="scss">
 @import './changeThemeMixin.scss';
 @import './base.scss';
 h1,

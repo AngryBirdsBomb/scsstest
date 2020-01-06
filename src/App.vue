@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
+    <router-link to="/test">test</router-link>
     <router-link to="/selColor">跳转到切换主题页</router-link>
     <router-view/>
   </div>
