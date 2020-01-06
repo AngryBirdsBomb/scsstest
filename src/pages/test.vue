@@ -211,25 +211,26 @@ export default {
             var star = document.getElementsByClassName("star");
 
             // 给流星添加动画延时
-            for (var i = 0, len = star.length; i < len; i++) {
+            for (let i = 0, len = star.length; i < len; i++) {
                 let disX = parseInt(star[i].offsetLeft) - x;
                 let disY = parseInt(star[i].offsetTop) - y;
                 let dis = Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2));
                 let top = parseInt(star[i].offsetTop) ;
                 let left = parseInt(star[i].offsetLeft);
                 let timer = setInterval(() => {
-                    top--;
-                    left--;
-                    if(left<=0){
-                        left=0;
+                    top-=10;
+                    left-=10;
+                    if(left<=x){
+                        left=x;
                     }
-                    if(top<=0){
-                        top=0;
+                    if(top<=y){
+                        top=y;
                     }
                     star[i].style.top = top + "px";
                     star[i].style.left = left + "px";
-                    if(left==0&&top==0){
+                    if(left==x&&top==y){
                         clearInterval(timer);
+                        star[i].style.display='none';
                     }
                 }, 1000);
                 star[i].style.animationDelay =
@@ -244,7 +245,7 @@ export default {
     },
     mounted() {
         //this.init();
-        this.cc(100, 100);
+        this.cc(300, 300);
     }
 };
 </script>
